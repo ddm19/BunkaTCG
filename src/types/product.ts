@@ -1,0 +1,17 @@
+export interface ProductType
+{
+    id: number;
+    name: string;
+    price: number;
+    image: string;
+    description: string;
+    available: boolean;
+    category: CategoryType | string;
+    stock: number;
+}
+export enum CategoryType
+{
+    Caja = "caja",
+    Deck = "deck",
+    Accesorio = "accesorio"
+}

@@ -1,0 +1,89 @@
+.home
+{
+    padding-top: var(--spacing-2);
+
+    &__hero
+    {
+        text-align: center;
+        padding: var(--spacing-3);
+        background: var(--background-color);
+        color: var(--text-color);
+
+
+        &_product
+        {
+            margin: var(--spacing-4);
+        }
+    }
+
+    &__products
+    {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+        gap: var(--spacing-2);
+        padding: 0 var(--spacing-3);
+        justify-content: center;
+        margin: 0 5%;
+
+        @media (max-width: 768px)
+        {
+            grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+
+        }
+    }
+
+    &__title
+    {
+        font-size: var(--font-size-4);
+        margin: var(--spacing-4);
+        text-align: center;
+        color: var(--text-color);
+
+    }
+
+    &__goUp
+    {
+        position: fixed;
+        bottom: 5%;
+        right: var(--spacing-3);
+        background: var(--accent-color);
+        color: var(--text-color);
+        font-size: var(--font-size-3);
+        cursor: pointer;
+        z-index: var(--layer-super);
+        border-radius: 5%;
+        width: var(--button-height-1);
+        height: var(--button-height-1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+
+        &:hover
+        {
+            animation: bounce 0.5s ease-in-out infinite;
+
+        }
+
+        @keyframes bounce
+        {
+            0%
+            {
+                transform: translateY(0);
+            }
+
+            5%
+            {
+                transform: translateY(-10px);
+            }
+
+            100%
+            {
+                transform: translateY(0);
+            }
+
+        }
+    }
+
+
+}

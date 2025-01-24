@@ -1,0 +1,53 @@
+:root
+{
+    font-size: 16px;
+    line-height: 1.5;
+
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root
+{
+    min-height: 100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+#root
+{
+    overflow: hidden;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+{
+    font-weight: bold;
+}
+
+a
+{
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+button
+{
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
