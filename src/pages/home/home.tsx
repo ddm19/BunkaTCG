@@ -75,7 +75,7 @@ export default function Home()
             <section className="home__featuredProduct">
                 {featuredProduct && (
                     <div className="home__featuredProduct">
-                        <FeaturedProductComponent product={featuredProduct} classname="featuredProduct" />
+                        <FeaturedProductComponent product={featuredProduct} />
                     </div>
                 )}
             </section>

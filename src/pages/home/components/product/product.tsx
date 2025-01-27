@@ -13,7 +13,7 @@ export default function ProductComponent(props: ProductProps)
     const { product, classname } = props;
 
     return (
-        <Link to={`/product/${product.id}`} className="product__button">
+        <Link to={`/product/${product.id}`} className={`product__button ${!product.available ? "product__button--disabled" : ""}`}>
             <div className={`${classname || ""} product`}>
                 <div className="product__imageContainer">
                     {!product.available && <img src="/images/noDisponible.png" alt="Agotado" className="product__soldout" />}

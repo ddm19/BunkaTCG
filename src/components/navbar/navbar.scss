@@ -72,6 +72,11 @@
         font-size: var(--font-size-2);
         padding: var(--spacing-1);
         transition: transform 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-1);
+        padding: var(--spacing-1s);
 
 
         &:hover

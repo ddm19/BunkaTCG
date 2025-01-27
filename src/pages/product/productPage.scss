@@ -8,6 +8,7 @@
     border-radius: 10px;
     margin: 5% 15%;
     gap: var(--spacing-8);
+    width: 60%;
 
     &__image
     {
@@ -21,10 +22,11 @@
     &__info
     {
         text-align: center;
-        margin-top: var(--spacing-2);
-        width: 100%;
+        margin-top: var(--spacing-8);
+        width: 50%;
         display: flex;
         flex-direction: column;
+        align-self: flex-start;
     }
 
     &__title
@@ -50,24 +52,29 @@
 
     &__button
     {
-        background: var(--accent-color);
+        --initial-gradient: linear-gradient(to right, transparent 0%, transparent 50%, var(--accent-color) 50%, var(--accent-color) 100%);
+        --hover-gradient: linear-gradient(to right, var(--accent-color) 0%, var(--accent-color) 50%, transparent 50%, transparent 100%);
+        --background-position-initial: 100%;
+        --background-position-hover: 0%;
+
+        background: var(--initial-gradient);
+        background-size: 200% 100%;
+        background-position: var(--background-position-initial);
+        border: 1px solid var(--accent-color);
         height: var(--button-height-3);
         color: var(--text-color);
-        border: none;
         padding: var(--spacing-1) var(--spacing-2);
         cursor: pointer;
         border-radius: 5px;
         font-size: var(--font-size-2);
         font-weight: bold;
-        transition: all 0.3s ease-in-out;
-
-
-
-
+        position: relative;
+        transition: background-position 0.65s ease-in-out, color 0.5s ease-in-out, border 0.5s ease-in-out;
 
         &:hover
         {
-            animation: pulse 0.3s ease-in-out infinite;
+            background-position: var(--background-position-hover);
+            color: var(--accent-color);
         }
 
         &--disabled
@@ -82,6 +89,11 @@
                 display: block;
                 font-size: var(--font-size-1);
                 margin-top: var(--spacing-1);
+            }
+
+            &:hover
+            {
+                animation: none;
             }
         }
     }

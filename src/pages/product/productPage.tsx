@@ -4,12 +4,29 @@ import { getProductById } from "services/products";
 import { ProductType } from "types/product";
 import Loading from "components/loading/loading";
 import "./productPage.scss";
+import { useDispatch } from "react-redux";
+import { addToCart } from "redux/cartSlice";
+import { showNotification } from "redux/notificationSlice";
 
 export default function ProductPage()
 {
     const { id } = useParams<{ id: string; }>();
     const [product, setProduct] = useState<ProductType | null>(null);
     const [loading, setLoading] = useState(true);
+    const dispatch = useDispatch();
+
+
+    const handleAddToCart = () =>
+    {
+        if (product != null && product.available && product.stock > 0)
+        {
+            dispatch(addToCart(product));
+            dispatch(showNotification("Producto añadido al carrito."));
+        }
+
+        else
+            dispatch(showNotification("Producto no disponible."));
+    };
 
     useEffect(() =>
     {
@@ -40,7 +57,10 @@ export default function ProductPage()
                 <h1 className="productPage__title">{product.name}</h1>
                 <p className="pproductPage__description">{product.description}</p>
                 <p className="productPage__price">{product.price}€</p>
-                <button className={`productPage__button ${!product.available ? "productPage__button--disabled" : ""}`} disabled={!product.available}>Añadir al carrito</button>
+                <button className={`productPage__button ${!product.available ? "productPage__button--disabled" : ""}`} disabled={!product.available} onClick={handleAddToCart}>Añadir al carrito</button>
+                {!product.available &&
+                    <button className={`productPage__button`} disabled={!product.available}>Notificarme cuando esté disponible</button>
+                }
             </div>
         </div>
     );
