@@ -1,0 +1,34 @@
+.footer
+{
+    background: var(--secondary-color);
+    color: var(--text-color);
+    padding: var(--spacing-3);
+    text-align: center;
+    font-size: var(--font-size-1);
+    margin-top: var(--spacing-3);
+
+    &__links
+    {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-2);
+        margin-bottom: var(--spacing-2);
+    }
+
+    &__link
+    {
+        color: var(--text-color);
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+
+        &:hover
+        {
+            color: var(--accent-color);
+        }
+    }
+
+    &__copyright
+    {
+        font-size: var(--font-size-1);
+    }
+}
