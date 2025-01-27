@@ -15,6 +15,13 @@
         justify-content: center;
         align-items: center;
 
+        @media (max-width: 768px)
+        {
+            flex-direction: column;
+        }
+
+        ;
+
         &:hover
         {
             transform: scale(1.0);
@@ -41,6 +48,11 @@
             &:hover
             {
                 transform: translate(0, -5px) scale(1.05);
+            }
+
+            @media (max-width: 768px)
+            {
+                margin: 0;
             }
         }
 
