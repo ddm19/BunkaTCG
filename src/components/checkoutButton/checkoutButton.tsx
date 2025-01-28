@@ -1,5 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "redux/store";
+import { useDispatch } from "react-redux";
 import { useStripe, useElements, CardNumberElement, CardExpiryElement, CardCvcElement } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +8,6 @@ export default function CheckoutButton()
 {
     const stripe = useStripe();
     const elements = useElements();
-    const products = useSelector((state: RootState) => state.cart.products);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const navigate = useNavigate();
     const dispatch = useDispatch();
