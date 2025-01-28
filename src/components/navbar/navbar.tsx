@@ -14,6 +14,11 @@ export default function Navbar()
     const cartCount = useSelector((state: RootState) => state.cart.products.length);
     const [menuOpen, setMenuOpen] = useState(false);
 
+    const links =
+        [
+            { to: "/", text: "Inicio" },
+        ];
+
     return (
         <>
             <nav className="navbar">
@@ -27,8 +32,16 @@ export default function Navbar()
                 </button>
 
                 <div className={`navbar__links ${menuOpen ? "navbar__links--open" : ""}`}>
-                    <Link to="/" className="navbar__link" onClick={() => setMenuOpen(false)}>Inicio</Link>
-                    <Link to="/about" className="navbar__link" onClick={() => setMenuOpen(false)}>Aviso Legal</Link>
+                    {links.map((link, index) => (
+                        <Link
+                            key={index}
+                            to={link.to}
+                            className="navbar__link"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            {link.text}
+                        </Link>
+                    ))}
                 </div>
 
                 <button className="navbar__cart" onClick={() => dispatch(toggleCart())}>

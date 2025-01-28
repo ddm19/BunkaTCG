@@ -1,0 +1,152 @@
+.checkout
+{
+    padding: var(--spacing-3);
+    max-width: 100%;
+    margin: auto;
+    text-align: center;
+
+    &__title
+    {
+        font-size: var(--font-size-3);
+        color: var(--accent-color);
+        margin-bottom: var(--spacing-2);
+    }
+
+    &__empty
+    {
+        font-size: var(--font-size-2);
+        color: var(--text-color);
+        margin-top: var(--spacing-3);
+    }
+
+    &__summary
+    {
+        background: var(--secondary-color);
+        padding: var(--spacing-3);
+        border-radius: var(--border-radius);
+        text-align: left;
+    }
+
+    &__subtitle
+    {
+        font-size: var(--font-size-2);
+        margin-bottom: var(--spacing-2);
+    }
+
+    &__list
+    {
+        list-style: none;
+        padding: 0;
+    }
+
+    &__item
+    {
+        display: flex;
+        align-items: center;
+        margin-bottom: var(--spacing-2);
+    }
+
+    &__image
+    {
+        width: var(--image-size-cart);
+        height: var(--image-size-cart);
+        object-fit: cover;
+        border-radius: 5px;
+        margin-right: var(--spacing-2);
+    }
+
+    &__details
+    {
+        flex-grow: 1;
+    }
+
+    &__name
+    {
+        font-size: var(--font-size-2);
+    }
+
+    &__quantity
+    {
+        font-size: var(--font-size-1);
+    }
+
+    &__price
+    {
+        font-weight: bold;
+        color: var(--accent-color);
+    }
+
+    &__total
+    {
+        font-size: var(--font-size-2);
+        font-weight: bold;
+        margin-top: var(--spacing-3);
+    }
+
+    &__button
+    {
+        --initial-gradient: linear-gradient(to right, transparent 0%, transparent 50%, var(--accent-color) 50%, var(--accent-color) 100%);
+        --hover-gradient: linear-gradient(to right, var(--accent-color) 0%, var(--accent-color) 50%, transparent 50%, transparent 100%);
+        --background-position-initial: 100%;
+        --background-position-hover: 0%;
+
+        background: var(--initial-gradient);
+        background-size: 200% 100%;
+        background-position: var(--background-position-initial);
+        border: 1px solid var(--accent-color);
+        color: var(--text-color);
+        font-weight: bold;
+        padding: var(--spacing-2);
+        border-radius: 5px;
+        font-size: var(--font-size-2);
+        cursor: pointer;
+        width: 100%;
+        margin-top: var(--spacing-2);
+        transition: background-position 0.65s ease-in-out, color 0.5s ease-in-out;
+
+        &:hover
+        {
+            background-position: var(--background-position-hover);
+            color: var(--accent-color);
+
+        }
+    }
+
+    &__form
+    {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-2);
+
+    }
+
+    &__formGroup
+    {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-1);
+    }
+
+    &__label
+    {
+        font-size: var(--font-size-2);
+        color: var(--accent-color);
+        font-weight: bold;
+    }
+
+    &__input
+    {
+        padding: var(--spacing-1);
+        border: 1px solid var(--text-color);
+        border-radius: var(--border-radius-1);
+        font-size: var(--font-size-2);
+        color: var(--text-color);
+
+    }
+
+    &__error
+    {
+        font-size: var(--font-size-1);
+        color: var(--error-color);
+    }
+}

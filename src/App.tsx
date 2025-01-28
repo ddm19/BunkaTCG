@@ -11,6 +11,7 @@ import Legal from "pages/legal/legal";
 import Privacy from "pages/legal/privacy";
 import RefundsPage from "pages/legal/refunds";
 import AboutPage from "pages/about/about";
+import Checkout from "pages/checkout/checkout";
 
 function App()
 {
@@ -26,6 +27,7 @@ function App()
         <Route path="/cookies" element={<Cookies />} />
         <Route path="/shipping-refund" element={<RefundsPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />

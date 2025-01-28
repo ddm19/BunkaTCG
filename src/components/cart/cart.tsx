@@ -2,13 +2,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "redux/store";
 import { removeFromCart, updateQuantity, toggleCart, clearCart } from "redux/cartSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faShoppingCart, faAnglesRight, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faShoppingCart, faAnglesRight, faMinus, faPlus, faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import "./cart.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart()
 {
     const dispatch = useDispatch();
     const { products, isOpen } = useSelector((state: RootState) => state.cart);
+    const navigate = useNavigate();
+
 
     const handleUpdateQuantity = (id: number, quantity: number) =>
     {
@@ -67,11 +70,18 @@ export default function Cart()
                             </li>
                         ))}
                     </ul>
-                    <button className="cart__clear" onClick={() => dispatch(clearCart())}>
-                        Vaciar Carrito
-                    </button>
+                    <div className="cart__buttons">
+                        <button className="cart__clear" onClick={() => dispatch(clearCart())}>
+                            <FontAwesomeIcon icon={faTrash} />
+
+                            Vaciar Carrito
+                        </button>
+                        <button className="cart__checkout" onClick={() => { dispatch(toggleCart()); navigate("/checkout"); }} ><FontAwesomeIcon icon={faCreditCard} /> Finalizar Compra</button>
+
+                    </div>
+
                 </>
             )}
-        </div>
+        </div >
     );
 }

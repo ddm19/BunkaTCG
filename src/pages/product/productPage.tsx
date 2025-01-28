@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "redux/cartSlice";
 import { showNotification } from "redux/notificationSlice";
 
+
 export default function ProductPage()
 {
     const { id } = useParams<{ id: string; }>();
@@ -16,17 +17,7 @@ export default function ProductPage()
     const dispatch = useDispatch();
 
 
-    const handleAddToCart = () =>
-    {
-        if (product != null && product.available && product.stock > 0)
-        {
-            dispatch(addToCart(product));
-            dispatch(showNotification("Producto añadido al carrito."));
-        }
 
-        else
-            dispatch(showNotification("Producto no disponible."));
-    };
 
     useEffect(() =>
     {
@@ -57,7 +48,7 @@ export default function ProductPage()
                 <h1 className="productPage__title">{product.name}</h1>
                 <p className="pproductPage__description">{product.description}</p>
                 <p className="productPage__price">{product.price}€</p>
-                <button className={`productPage__button ${!product.available ? "productPage__button--disabled" : ""}`} disabled={!product.available} onClick={handleAddToCart}>Añadir al carrito</button>
+                <button className={`productPage__button ${!product.available ? "productPage__button--disabled" : ""}`} disabled={!product.available} onClick={() => handleAddToCart(product, dispatch)}>Añadir al carrito</button>
                 {!product.available &&
                     <button className={`productPage__button`} disabled={!product.available}>Notificarme cuando esté disponible</button>
                 }
@@ -65,3 +56,14 @@ export default function ProductPage()
         </div>
     );
 }
+export const handleAddToCart = (product: ProductType, dispatch: any) =>
+{
+    if (product != null && product.available && product.stock > 0)
+    {
+        dispatch(addToCart(product));
+        dispatch(showNotification("Producto añadido al carrito."));
+    }
+
+    else
+        dispatch(showNotification("Producto no disponible."));
+};
