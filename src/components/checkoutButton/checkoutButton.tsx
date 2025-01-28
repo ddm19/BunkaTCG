@@ -55,7 +55,7 @@ export default function CheckoutButton()
         <form className="checkout__form" onSubmit={(e) => handleSubmit(e)}>
             <div className="checkout__formGroup">
                 <label className="checkout__label">Número de Tarjeta</label>
-                <CardNumberElement className="checkout__input" options={{ style: { base: { color: "white" } } }} />
+                <CardNumberElement className="checkout__input" options={{ style: { base: { color: "white" } }, showIcon: true }} />
             </div>
 
             <div className="checkout__formGroup">
