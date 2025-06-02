@@ -30,7 +30,7 @@ export default function ProductComponent(props: ProductProps)
             <div className={`${classname || ""} product`}>
                 <div className="product__imageContainer">
                     {!product.available && <img src="/images/noDisponible.png" alt="Agotado" className="product__soldout" />}
-                    <img src={product.image} alt={product.name} className={`product__image ${product.available ? "" : "product__image--soldout"}`} />
+                    <img src={`data:image/png;base64,${product.image}`} alt={product.name} className={`product__image ${product.available ? "" : "product__image--soldout"}`} />
 
                 </div>
 

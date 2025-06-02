@@ -13,7 +13,7 @@ export default function Home()
     const [visibleProducts, setVisibleProducts] = useState(4);
     const [isGoingUpVisible, setIsGoingUpVisible] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [isFetching, setIsFetching] = useState(false); // Nuevo estado para evitar múltiples disparos
+    const [isFetching, setIsFetching] = useState(false); 
 
     useEffect(() =>
     {

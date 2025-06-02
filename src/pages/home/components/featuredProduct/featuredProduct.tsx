@@ -15,7 +15,7 @@ const FeaturedProductComponent = (props: FeaturedProductProps) =>
     return (
         <Link to={`/product/${product.id}`} >
             <div className={`${classname || ""} featuredProduct`}>
-                <img src={product.image} alt={product.name} className="featuredProduct__image" />
+                <img src={`data:image/png;base64,${product.image}`} alt={product.name} className="featuredProduct__image" />
                 <div className="featuredProduct__textContainer">
                     <h2 className="featuredProduct__title">{product.name}</h2>
                     <p className="featuredProduct__description">{product.description}</p>

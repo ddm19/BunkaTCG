@@ -1,9 +1,8 @@
 import { useSelector } from "react-redux";
 import { RootState } from "redux/store";
 import "./checkout.scss";
-import { Elements } from "@stripe/react-stripe-js";
 import CheckoutButton from "components/checkoutButton/checkoutButton";
-import stripePromise from "services/stripe/stripe";
+
 
 export default function Checkout()
 {
@@ -12,7 +11,6 @@ export default function Checkout()
 
     return (
         //set theme for stripe
-        <Elements stripe={stripePromise} >
             <div className="checkout">
                 <h1 className="checkout__title">Finalizar Compra</h1>
 
@@ -40,6 +38,5 @@ export default function Checkout()
                     </div>
                 )}
             </div>
-        </Elements>
     );
 }
