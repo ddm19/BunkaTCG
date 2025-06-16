@@ -10,7 +10,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "~": resolve(__dirname, "src"),
-      "@sass": resolve(__dirname, "/styles"),
+      "@sass": resolve(__dirname, "src/styles"),
     },
   },
   server:

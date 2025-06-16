@@ -3,18 +3,18 @@
     .featuredProduct
     {
         background: var(--primary-color);
-        padding: var(--spacing-2);
+        padding: var(--spacing-5);
         border-radius: var(--border-radius-2);
-        ;
         text-align: center;
         box-shadow: 0 2px 5px var(--shadow-box-color-1);
-        width: 100%;
+        width: 90%;
         height: 100%;
-        padding: var(--spacing-2);
         transition: transform 0.3s ease-in-out;
         display: flex;
         justify-content: center;
         align-items: center;
+        margin: auto;
+
 
         @media (max-width: 768px)
         {
@@ -43,7 +43,7 @@
             border: none;
             cursor: pointer;
             height: var(--button-height-8);
-            width: 100%;
+            width: 50%;
             transition: transform 0.3s ease-in-out;
 
 
@@ -74,13 +74,15 @@
 
         &__title
         {
-            font-size: var(--font-size-3);
+            font-size: var(--font-size-9);
             margin: var(--spacing-1) 0;
+            color: var(--accent-color);
+            font-weight: bold;
         }
 
         &__image
-        {
-            width: var(--image-size-product);
+        { 
+            width: var(--image-size-productMainPage);
             max-width: 100%;
             border-radius: var(--border-radius-2);
             ;

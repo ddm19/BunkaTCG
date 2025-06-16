@@ -16,18 +16,6 @@ export const getProducts = async () =>
                 });
 };
 
-const products : ProductType[] = [
-    {
-        id: 1,
-        name: 'Product 1',
-        price: 10.99,
-        image: 'https://via.placeholder.com/150',
-        description: 'This is product 1',
-        available: true,
-        category: CategoryType.Box,
-        stock: 10
-    }
-]
 
 export const getFeaturedProduct = async () =>
 {
@@ -51,5 +39,16 @@ export const getFeaturedProduct = async () =>
 };
 export const getProductById = async (id: number) =>
 {
-    return products.find((product) => product.id === id) || null;
+    return supabase.from('products').select('*').eq('id',id).then(({data,error} : any)=>
+    {
+        if(data)
+        {
+            return data[0];
+        }
+        else
+        {
+            console.log(error);
+        }
+    });
+    
 };

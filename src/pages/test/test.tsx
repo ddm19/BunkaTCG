@@ -1,10 +1,11 @@
-import ProductComponent from "pages/home/components/product/product";
+import ProductComponent from "components/product/product";
 import { useEffect, useState } from "react";
 import { supabase } from "services/supabaseClient";
+import { ProductType } from "types/product";
 
 const TestPage = () =>
 {
-    const [products,setProducts] = useState([]);
+    const [products,setProducts] = useState<ProductType[]>([]);
 
     useEffect(()=>
     {
@@ -22,11 +23,7 @@ const TestPage = () =>
 
     },[])
 
-    useEffect(()=>
-    {
-        console.log(products);
-    },[products])
-    
+  
     return (
         <>
         <div>TEST</div>
