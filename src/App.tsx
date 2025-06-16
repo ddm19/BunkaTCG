@@ -12,10 +12,8 @@ import Privacy from "pages/legal/privacy";
 import RefundsPage from "pages/legal/refunds";
 import AboutPage from "pages/about/about";
 import Checkout from "pages/checkout/checkout";
-import Test from "pages/test/test";
 
-function App()
-{
+function App() {
   return (
     <>
       <Toast />
@@ -29,7 +27,6 @@ function App()
         <Route path="/shipping-refund" element={<RefundsPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/test" element={<Test />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />

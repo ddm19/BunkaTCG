@@ -1,4 +1,3 @@
-import { CategoryType, ProductType } from "types/product";
 import { supabase } from "./supabaseClient";
 
 export const getProducts = async () =>
