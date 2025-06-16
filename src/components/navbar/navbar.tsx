@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "redux/store";
 import "./navbar.scss";
@@ -8,11 +8,12 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 
-export default function Navbar()
-{
+export default function Navbar() {
     const dispatch = useDispatch();
     const cartCount = useSelector((state: RootState) => state.cart.products.length);
     const [menuOpen, setMenuOpen] = useState(false);
+    const { pathname } = useLocation();
+    const isCheckout = pathname.startsWith("/checkout");
 
     const links =
         [
@@ -43,11 +44,13 @@ export default function Navbar()
                         </Link>
                     ))}
                 </div>
+                {!isCheckout && (
+                    <button className="navbar__cart" onClick={() => dispatch(toggleCart())}>
+                        <span className="navbar__badge">{cartCount}</span>
+                        <FontAwesomeIcon icon={faCartShopping} />
+                    </button>
+                )}
 
-                <button className="navbar__cart" onClick={() => dispatch(toggleCart())}>
-                    <span className="navbar__badge">{cartCount}</span>
-                    <FontAwesomeIcon icon={faCartShopping} />
-                </button>
             </nav>
             <Cart />
         </>

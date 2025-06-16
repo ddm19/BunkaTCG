@@ -13,8 +13,7 @@ import RefundsPage from "pages/legal/refunds";
 import AboutPage from "pages/about/about";
 import Checkout from "pages/checkout/checkout";
 
-function App()
-{
+function App() {
   return (
     <>
       <Toast />

@@ -21,7 +21,7 @@
 
     &__image
     {
-        width: var(--image-size-product);
+        width: var(--image-size-productPage);
         max-width: 100%;
         border-radius: var(--border-radius-2);
         ;
@@ -56,6 +56,20 @@
         font-size: var(--font-size-2);
         color: var(--text-color);
         margin-bottom: var(--spacing-2);
+        display: -webkit-box;
+        line-clamp: 3;                 
+        -webkit-line-clamp: 3;          
+        -webkit-box-orient: vertical;  
+        
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-height: 4.5em;              
+        line-height: 1.5em;
+        
+       
+        @supports not (-webkit-line-clamp: 3) {
+          max-height: min(4.5em, calc(1.5em * 3)); 
+        }
     }
 
     &__price

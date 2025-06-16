@@ -23,7 +23,7 @@
         gap: var(--spacing-2);
         padding: 0 var(--spacing-3);
         justify-content: center;
-        margin: 0 5%;
+        margin: 0 5% var(--spacing-4) 5%;
 
         @media (max-width: 768px)
         {
@@ -45,14 +45,17 @@
     {
         position: fixed;
         bottom: 5%;
-        right: var(--spacing-3);
+        left: 50%;
+        transform: translateX(-50%);
+        padding: var(--spacing-2);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
         background: var(--accent-color);
         color: var(--text-color);
         font-size: var(--font-size-3);
         cursor: pointer;
         z-index: var(--layer-super);
         border-radius: 5%;
-        width: var(--button-height-1);
+        width: var(--button-height-7);
         height: var(--button-height-1);
         display: flex;
         align-items: center;
@@ -61,7 +64,8 @@
 
         &:hover
         {
-            animation: bounce 0.4s ease-in-out infinite;
+            animation: bounce 0.5s ease-in-out;
+            animation-iteration-count: infinite;
 
         }
 
@@ -69,17 +73,17 @@
         {
             0%
             {
-                transform: translateY(0);
+                transform: translate(-50%, -5px);
             }
 
-            5%
+            50%
             {
-                transform: translateY(-2px);
+                transform: translate(-50%, 0px);
             }
 
             100%
             {
-                transform: translateY(0);
+                transform: translate(-50%, -5px);
             }
 
         }

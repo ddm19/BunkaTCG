@@ -2,14 +2,12 @@ import { ProductType } from "types/product";
 import "./featuredProduct.scss";
 import { Link } from "react-router-dom";
 
-interface FeaturedProductProps
-{
+interface FeaturedProductProps {
     product: ProductType;
     classname?: string;
 }
 
-const FeaturedProductComponent = (props: FeaturedProductProps) =>
-{
+const FeaturedProductComponent = (props: FeaturedProductProps) => {
     const { product, classname } = props;
 
     return (
