@@ -1,7 +1,6 @@
 import './legal.scss';
 
-export default function PrivacyPage()
-{
+export default function PrivacyPage() {
     return (
         <div className="policy">
             <h1 className='policy__title'>POLÍTICA DE PRIVACIDAD DEL SITIO WEB</h1>
@@ -50,7 +49,7 @@ export default function PrivacyPage()
             <p className='policy__text'>
                 El responsable del tratamiento de los datos personales recogidos en Bunka TCG es:
                 Teléfono de contacto: 685045893
-                Email de contacto: bunkatcg@gmail.com
+                Email de contacto: bunkadojo@gmail.com
             </p>
             <span className='policy--bold'>Registro de Datos de Carácter Personal</span>
             <p className='policy__text'>
@@ -293,7 +292,7 @@ export default function PrivacyPage()
             </ul>
             <p className='policy__text'>
                 Así pues, el Usuario podrá ejercitar sus derechos mediante comunicación escrita
-                dirigida al Responsable del tratamiento con la referencia “RGPD-www.bunkatcg.es“,
+                dirigida al Responsable del tratamiento con la referencia “RGPD-www.bunkadojo.com“,
                 especicando:
             </p>
             <ul className='policy__list'>
@@ -334,7 +333,7 @@ export default function PrivacyPage()
             <p className='policy__text'>
                 Esta solicitud y todo otro documento adjunto podrá enviarse a la siguiente dirección y/o
                 correo electrónico:
-                Correo electrónico: bunkatcg@gmail.com
+                Correo electrónico: bunkadojo@gmail.com
             </p>
             <span className='policy--bold'>Enlaces a sitios web de terceros</span>
             <p className='policy__text'>

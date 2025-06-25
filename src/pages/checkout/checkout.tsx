@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "redux/store";
 import "./checkout.scss";
 import CheckoutButton from "components/checkoutButton/checkoutButton";
-import CartList from "components/cart/components/cartList";
+import CartList, { normalizePrice } from "components/cart/components/cartList";
 
 
 export default function Checkout() {
@@ -18,9 +18,9 @@ export default function Checkout() {
             ) : (
                 <div className="checkout__summary">
                     <h2 className="checkout__subtitle">Resumen del Pedido</h2>
-                    <CartList />
+                    <CartList isFullWidth />
                     <p className="checkout__total">
-                        Total: {products.reduce((sum, p) => sum + p.price * p.quantity, 0)}€
+                        Total: {normalizePrice(products.reduce((sum, p) => sum + p.price * p.quantity, 0))}€
                     </p>
                     <CheckoutButton />
                 </div>

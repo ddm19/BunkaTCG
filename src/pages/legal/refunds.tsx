@@ -1,6 +1,5 @@
 import './legal.scss';
-export default function RefundsPage()
-{
+export default function RefundsPage() {
     return (
         <div className="policy">
             <h1 className='policy__title'>Tiempo de Envío</h1>
@@ -40,7 +39,7 @@ export default function RefundsPage()
                 comprador será responsable de los gastos de envío del producto de vuelta al almacén
                 de origen siempre que el producto no haya sido desprecintado y abierta la caja del
                 producto con la pegatina o lm protector.
-                Para solicitar la misma debe contactar por email a bunkatcg@gmail.com o whatsapp:
+                Para solicitar la misma debe contactar por email a bunkadojo@gmail.com o whatsapp:
                 685045893
                 Usted debe cumplir lo siguiente:
                 Los productos deben estar precintados y sin abrir en el mismo estado en el que se le
@@ -51,7 +50,7 @@ export default function RefundsPage()
                 seguimiento del envío, ya que sin ello no podremos validar su devolución.
                 Al recibir su artículo devuelto, inspeccionaremos las mercancías. Una vez aprobado y el
                 producto pase la fase de inspección, entonces se procesará su reembolso íntegro de su
-                compra en www.bunkatcg.es
+                compra en www.bunkadojo.com
             </p>
         </div>
     );

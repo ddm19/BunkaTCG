@@ -27,7 +27,8 @@
         text-decoration: none;
         color: var(--text-color);
         position: absolute;
-        left: 0;
+        left: var(--spacing-2);
+        font-family: var(--font-family-logo);
 
         img
         {
