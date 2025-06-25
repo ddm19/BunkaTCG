@@ -8,6 +8,7 @@ export interface ProductType
     available: boolean;
     category: CategoryType | string;
     stock: number;
+    shortDescription: string;
 }
 export enum CategoryType
 {

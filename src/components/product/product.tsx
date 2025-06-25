@@ -33,7 +33,7 @@ export default function ProductComponent(props: ProductProps) {
                 </div>
 
                 <h2 className="product__title">{product.name}</h2>
-                <p className="product__description">{product.description}</p>
+                <p className="product__description">{product.shortDescription}</p>
                 <p className="product__price">{product.price}€</p>
                 {product.available && cartButton &&
                     <button className="product__shopButton" onClick={(e) => handleClick(e)}><FontAwesomeIcon icon={faPlus} className="product__shopButtonIcon--small" /><FontAwesomeIcon icon={faCartShopping} /></button>
