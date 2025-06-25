@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import './legal.scss';
 
-export default function CookiesPage()
-{
+export default function CookiesPage() {
     return (
         <div className="policy">
             <h1 className='policy__title'>Política de Cookies</h1>
@@ -43,7 +42,7 @@ export default function CookiesPage()
                 Puede cambiar sus preferencias de cookies en cualquier momento haciendo clic en el
                 botón de arriba. Esto le permitirá volver a visitar el banner de consentimiento de cookies
                 y cambiar sus preferencias o retirar su consentimiento de inmediato.
-                bunkatcg.es únicamente utiliza cookies que permiten el funcionamiento y la prestación
+                bunkadojo.com únicamente utiliza cookies que permiten el funcionamiento y la prestación
                 de los servicios ofrecidos en la misma y que en ningún caso tratan datos de conexión
                 y/o de los dispositivos para nes estadísticos ni captan hábitos de navegación para
                 nes publicitarios.Por ello, al acceder a nuestra web, en cumplimiento del artículo 22 de
@@ -56,7 +55,7 @@ export default function CookiesPage()
                 Puede cambiar sus preferencias de cookies en cualquier momento haciendo clic en el
                 botón de arriba. Esto le permitirá volver a visitar el banner de consentimiento de cookies
                 y cambiar sus preferencias o retirar su consentimiento de inmediato.
-                bunkatcg.es únicamente utiliza cookies que permiten el funcionamiento y la prestación
+                bunkadojo.com únicamente utiliza cookies que permiten el funcionamiento y la prestación
                 de los servicios ofrecidos en la misma y que en ningún caso tratan datos de conexión
                 y/o de los dispositivos para nes estadísticos ni captan hábitos de navegación para
                 nes publicitarios.Por ello, al acceder a nuestra web, en cumplimiento del artículo 22 de

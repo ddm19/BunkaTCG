@@ -24,8 +24,8 @@ export default function Navbar() {
         <>
             <nav className="navbar">
                 <Link to="/" className="navbar__logo">
-                    <img src="/logo.svg" alt="BunkaTCG" />
-                    BunkaTCG
+                    <img src="/logo.svg" alt="Bunka Dojo" />
+                    Bunka Dojo
                 </Link>
 
                 <button className="navbar__menuButton" onClick={() => setMenuOpen(!menuOpen)}>

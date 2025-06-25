@@ -59,7 +59,7 @@ export default function Home() {
     return (
         <div className="home">
             <section className="home__hero">
-                <h1>Bienvenido a BunkaTCG</h1>
+                <h1>Bienvenido a Bunka Dojo</h1>
                 <p>Compra los mejores productos con descuentos exclusivos.</p>
             </section>
 

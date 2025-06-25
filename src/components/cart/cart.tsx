@@ -12,6 +12,7 @@ export default function Cart() {
     const { products, isOpen } = useSelector((state: RootState) => state.cart);
     const navigate = useNavigate();
 
+
     return (
         <div className={`cart ${isOpen ? "cart--open" : ""}`}>
             <button className="cart__close" onClick={() => dispatch(toggleCart())}>

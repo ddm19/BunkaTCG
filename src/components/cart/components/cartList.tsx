@@ -4,7 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateQuantity, removeFromCart } from "redux/cartSlice";
 import { RootState } from "redux/store";
 
-const CartList = () => {
+interface CartListProps {
+    isFullWidth?: boolean;
+}
+
+export const normalizePrice = (price: number) => {
+    return price.toFixed(2).replace(".", ",");
+}
+
+const CartList = (props: CartListProps) => {
+    const { isFullWidth = false } = props;
 
     const dispatch = useDispatch();
     const { products } = useSelector((state: RootState) => state.cart);
@@ -14,16 +23,14 @@ const CartList = () => {
 
         if (product != null && product.stock >= quantity && quantity > 0)
             dispatch(updateQuantity({ id, quantity }));
+        else if (quantity <= 0) {
+            dispatch(removeFromCart(id));
+        }
     };
-
-    const normalizePrice = (price: number) => {
-        return price.toFixed(2).replace(".", ",");
-    }
-
 
 
     return (
-        <ul className="cart__list">
+        <ul className={`cart__list ${isFullWidth ? "cart__list--fullWidth" : ""}`}>
             {products.map((product) => (
                 <li key={product.id} className="cart__item">
                     <img src={product.image} alt={product.name} className="cart__image" />

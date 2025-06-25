@@ -1,7 +1,6 @@
 import './legal.scss';
 
-export default function LegalPage()
-{
+export default function LegalPage() {
     return (
         <div className="policy">
             <h1 className='policy__title'>Aviso Legal</h1>
@@ -10,10 +9,10 @@ export default function LegalPage()
                 En cumplimiento con el deber de información dispuesto en la Ley 34/2002 de Servicios
                 de la Sociedad de la Información y el Comercio Electrónico (LSSI-CE) de 11 de julio, se
                 facilitan a continuación los siguientes datos de información general de este sitio web:
-                La titularidad de este sitio web,www.bunkatcg.es, (en adelante, Sitio Web) la ostenta:
+                La titularidad de este sitio web,www.bunkadojo.com, (en adelante, Sitio Web) la ostenta:
                 y cuyos datos de contacto son:
                 Teléfono de contacto: 685045893
-                Email de contacto: bunkatcg@gmail.com
+                Email de contacto: bunkadojo@gmail.com
             </p>
             <h2 className='policy__title'>II. TÉRMINOS Y CONDICIONES GENERALES DE USO</h2>
             <span className='policy--bold'>El objeto de las condiciones: El Sitio Web</span>
