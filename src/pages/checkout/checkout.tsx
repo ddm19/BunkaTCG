@@ -3,11 +3,20 @@ import { RootState } from "redux/store";
 import "./checkout.scss";
 import CheckoutButton from "components/checkoutButton/checkoutButton";
 import CartList, { normalizePrice } from "components/cart/components/cartList";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY as string);
 
 
 export default function Checkout() {
     const products = useSelector((state: RootState) => state.cart.products);
 
+    const getItems = () => {
+        return products.map(product => ({
+            price: product.paymentId,
+            quantity: product.quantity
+        }));
+    }
 
     return (
         <div className="checkout">
@@ -22,7 +31,9 @@ export default function Checkout() {
                     <p className="checkout__total">
                         Total: {normalizePrice(products.reduce((sum, p) => sum + p.price * p.quantity, 0))}€
                     </p>
-                    <CheckoutButton />
+                    <Elements stripe={stripePromise}>
+                        <CheckoutButton items={getItems()} />
+                    </Elements>
                 </div>
             )}
         </div>

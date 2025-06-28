@@ -36,7 +36,7 @@ export const getFeaturedProduct = async () =>
         }
     });
 };
-export const getProductById = async (id: number) =>
+export const getProductById = async (id: string) =>
 {
     return supabase.from('products').select('*').eq('id',id).then(({data,error} : any)=>
     {

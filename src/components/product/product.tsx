@@ -22,7 +22,6 @@ export default function ProductComponent(props: ProductProps) {
         e.preventDefault();
     };
 
-
     return (
         <Link to={`/product/${product.id}`} className={`product__button ${!product.available ? "product__button--disabled" : ""}`} onClick={(e) => { !product.available ? e.preventDefault() : null }}>
             <div className={`${classname || ""} product`}>

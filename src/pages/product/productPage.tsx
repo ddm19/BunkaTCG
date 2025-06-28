@@ -13,16 +13,22 @@ export default function ProductPage() {
     const { id } = useParams<{ id: string; }>();
     const [product, setProduct] = useState<ProductType | null>(null);
     const [loading, setLoading] = useState(true);
+    const [quantity, setQuantity] = useState(1);
     const dispatch = useDispatch();
 
     useEffect(() => {
         if (id) {
-            getProductById(Number(id)).then((data) => {
+            getProductById(id).then((data) => {
                 setProduct(data);
                 setLoading(false);
             });
         }
     }, [id]);
+    useEffect(() => {
+        if (product && product?.stock <= 0) {
+            product.available = false;
+        }
+    }, [product]);
 
     if (loading) {
         return <Loading />;
@@ -39,7 +45,9 @@ export default function ProductPage() {
                 <h1 className="productPage__title">{product.name}</h1>
                 <p className="productPage__description">{product.description}</p>
                 <p className="productPage__price">{product.price}€</p>
-                <button className={`productPage__button ${!product.available ? "productPage__button--disabled" : ""}`} disabled={!product.available} onClick={() => handleAddToCart(product, dispatch)}>Añadir al carrito</button>
+                <p className="productPage__stock">Disponibles: {product.stock}</p>
+                <input type="number" className="productPage__quantity" min="1" max={product.stock} defaultValue="1" onChange={(e) => setQuantity(parseInt(e.target.value))} />
+                <button className={`productPage__button ${!product.available ? "productPage__button--disabled" : ""}`} disabled={!product.available} onClick={() => handleAddToCart(product, dispatch, quantity)}>Añadir al carrito</button>
                 {!product.available &&
                     <button className={`productPage__button`} disabled={!product.available}>Notificarme cuando esté disponible</button>
                 }
@@ -47,9 +55,11 @@ export default function ProductPage() {
         </div>
     );
 }
-export const handleAddToCart = (product: ProductType, dispatch: any) => {
+export const handleAddToCart = (product: ProductType, dispatch: any, quantity: number = 1) => {
+
+
     if (product != null && product.available && product.stock > 0) {
-        dispatch(addToCart(product));
+        dispatch(addToCart({ product: product, quantityToAdd: quantity }));
         dispatch(showNotification("Producto añadido al carrito."));
     }
 
