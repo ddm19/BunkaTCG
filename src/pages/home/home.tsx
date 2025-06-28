@@ -16,8 +16,11 @@ export default function Home() {
 
     useEffect(() => {
         const fetchData = async () => {
-            getProducts().then((products) => setProducts(products));
-            getFeaturedProduct().then((product) => setFeaturedProduct(product));
+            setLoading(true);
+            getProducts().then((products) => setProducts(products))
+                .finally(() => setLoading(false));
+            getFeaturedProduct().then((product) => setFeaturedProduct(product))
+                .finally(() => setLoading(false));
         };
 
         fetchData();

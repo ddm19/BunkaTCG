@@ -4,6 +4,8 @@ import { supabase } from "services/supabaseClient";
 import "./checkoutButton.scss";
 import { useState } from "react";
 import Loading from "components/loading/loading";
+import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 interface CheckoutButtonProps {
     items?: { price: string; quantity: number }[];
     className?: string;
@@ -40,7 +42,7 @@ export default function CheckoutButton(props: CheckoutButtonProps) {
 
 
         <div className={`cart__buttons ${className || ""}`}>
-            <button disabled={isLoading} className="cart__checkout" onClick={checkout} > {isLoading ? <Loading /> : "Finalizar Pedido"}</button>
+            <button disabled={isLoading} className="cart__checkout" onClick={checkout} > {isLoading ? <Loading className="checkoutButton__loading" width="var(--load-spinner-size-1)" height="var(--load-spinner-size-1)" /> : <><FontAwesomeIcon icon={faCreditCard} /> Finalizar Compra</>}</button>
         </div>
     )
 

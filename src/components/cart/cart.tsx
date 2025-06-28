@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "redux/store";
 import { toggleCart, clearCart } from "redux/cartSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faShoppingCart, faAnglesRight, faCreditCard } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faShoppingCart, faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 import "./cart.scss";
 import { useNavigate } from "react-router-dom";
 import CartList from "./components/cartList";
@@ -35,7 +35,7 @@ export default function Cart() {
 
                             Vaciar Carrito
                         </button>
-                        <button className="cart__checkout" onClick={() => { dispatch(toggleCart()); navigate("/checkout"); }} ><FontAwesomeIcon icon={faCreditCard} /> Finalizar Compra</button>
+                        <button className="cart__checkout" onClick={() => { dispatch(toggleCart()); navigate("/checkout"); }} ><FontAwesomeIcon icon={faShoppingCart} />Ir al Carrito</button>
 
                     </div>
 
