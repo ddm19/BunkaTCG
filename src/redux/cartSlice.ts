@@ -19,7 +19,6 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<{product:ProductType,quantityToAdd:number}>) => {
-      debugger
       const existing = state.products.find(p => p.id === action.payload.product.id);
       const quantityToAdd = action.payload.quantityToAdd || 1;
       const finalQuantity = Math.min(quantityToAdd, action.payload.product.stock - (existing ? existing.quantity : 0));
