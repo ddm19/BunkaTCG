@@ -8,7 +8,7 @@ import Loading from "components/loading/loading";
 
 export default function Home() {
     const [products, setProducts] = useState<ProductType[]>([]);
-    const [featuredProduct, setFeaturedProduct] = useState<ProductType | null>(null);
+    const [featuredProduct, setFeaturedProduct] = useState<ProductType | undefined>();
     const [visibleProducts, setVisibleProducts] = useState(4);
     const [isGoingUpVisible, setIsGoingUpVisible] = useState(false);
     const [loading, setLoading] = useState(false);

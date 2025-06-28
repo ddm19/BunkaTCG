@@ -11,7 +11,7 @@ import { showNotification } from "redux/notificationSlice";
 
 export default function ProductPage() {
     const { id } = useParams<{ id: string; }>();
-    const [product, setProduct] = useState<ProductType | null>(null);
+    const [product, setProduct] = useState<ProductType | undefined>();
     const [loading, setLoading] = useState(true);
     const [quantity, setQuantity] = useState(1);
     const dispatch = useDispatch();
@@ -24,11 +24,7 @@ export default function ProductPage() {
             });
         }
     }, [id]);
-    useEffect(() => {
-        if (product && product?.stock <= 0) {
-            product.available = false;
-        }
-    }, [product]);
+
 
     if (loading) {
         return <Loading />;
@@ -40,16 +36,25 @@ export default function ProductPage() {
 
     return (
         <div className="productPage">
-            <img src={product.image} alt={product.name} className="productPage__image" />
+            <div className="product__imageContainer">
+                {!product.available && <img src="/images/noDisponible.png" alt="Agotado" className="product__soldout" />}
+                <img src={product.image} alt={product.name} className={`productPage__image ${product.available ? "" : "product__image--soldout"}`} />
+
+            </div>
             <div className="productPage__info">
                 <h1 className="productPage__title">{product.name}</h1>
                 <p className="productPage__description">{product.description}</p>
                 <p className="productPage__price">{product.price}€</p>
                 <p className="productPage__stock">Disponibles: {product.stock}</p>
-                <input type="number" className="productPage__quantity" min="1" max={product.stock} defaultValue="1" onChange={(e) => setQuantity(parseInt(e.target.value))} />
-                <button className={`productPage__button ${!product.available ? "productPage__button--disabled" : ""}`} disabled={!product.available} onClick={() => handleAddToCart(product, dispatch, quantity)}>Añadir al carrito</button>
-                {!product.available &&
-                    <button className={`productPage__button`} disabled={!product.available}>Notificarme cuando esté disponible</button>
+                {!product.available ?
+                    <button className={`productPage__button`} disabled={!product.available} >Notificarme cuando esté disponible</button>
+                    :
+                    <>
+                        <input type="number" className="productPage__quantity" min="1" max={product.stock} defaultValue="1" onChange={(e) => setQuantity(parseInt(e.target.value))} />
+                        <button className={`productPage__button ${!product.available ? "productPage__button--disabled" : ""}`} disabled={!product.available} onClick={() => handleAddToCart(product, dispatch, quantity)}>Añadir al carrito</button>
+
+                    </>
+
                 }
             </div>
         </div>

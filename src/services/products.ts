@@ -1,3 +1,4 @@
+import { ProductType } from "types/product";
 import { supabase } from "./supabaseClient";
 
 export const getProducts = async () =>
@@ -6,11 +7,11 @@ export const getProducts = async () =>
                 {
                     if(data)
                     {
-                        return data;
+                        return data.map((product: ProductType) => parseProductAvailability(product));
                     }
                     else
                     {
-                        console.log(error);
+                        console.error(error);
                     }
                 });
 };
@@ -28,11 +29,11 @@ export const getFeaturedProduct = async () =>
         if(data)
         {
             
-            return data[0].products;
+            return parseProductAvailability(data[0].products);
         }
         else
         {
-            console.log(error);
+            console.error(error);
         }
     });
 };
@@ -42,12 +43,20 @@ export const getProductById = async (id: string) =>
     {
         if(data)
         {
-            return data[0];
+            return parseProductAvailability(data[0]);
         }
         else
         {
-            console.log(error);
+            console.error(error);
         }
     });
     
 };
+export const parseProductAvailability= (product : ProductType) =>
+{
+    return {
+            ...product,
+            available: product.stock > 0 && product.available,
+        }
+    
+}
