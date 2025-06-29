@@ -1,6 +1,6 @@
 export interface ProductType
 {
-    id: number;
+    id: string;
     name: string;
     price: number;
     image: string;
@@ -8,6 +8,8 @@ export interface ProductType
     available: boolean;
     category: CategoryType | string;
     stock: number;
+    shortDescription: string;
+    paymentId: string; 
 }
 export enum CategoryType
 {

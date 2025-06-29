@@ -18,14 +18,16 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<ProductType>) => {
-      const existing = state.products.find(p => p.id === action.payload.id);
-      existing ? (existing.quantity += 1) : state.products.push({ ...action.payload, quantity: 1 });
+    addToCart: (state, action: PayloadAction<{product:ProductType,quantityToAdd:number}>) => {
+      const existing = state.products.find(p => p.id === action.payload.product.id);
+      const quantityToAdd = action.payload.quantityToAdd || 1;
+      const finalQuantity = Math.min(quantityToAdd, action.payload.product.stock - (existing ? existing.quantity : 0));
+      existing ? (existing.quantity += finalQuantity ) : state.products.push({ ...action.payload.product, quantity: finalQuantity });
     },
-    removeFromCart: (state, action: PayloadAction<number>) => {
+    removeFromCart: (state, action: PayloadAction<string>) => {
       state.products = state.products.filter(p => p.id !== action.payload);
     },
-    updateQuantity: (state, action: PayloadAction<{ id: number; quantity: number }>) => {
+    updateQuantity: (state, action: PayloadAction<{ id: string; quantity: number }>) => {
       const product = state.products.find(p => p.id === action.payload.id);
       if (product) product.quantity = Math.max(1, action.payload.quantity);
     },

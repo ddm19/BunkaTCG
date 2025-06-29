@@ -18,7 +18,7 @@ const CartList = (props: CartListProps) => {
     const dispatch = useDispatch();
     const { products } = useSelector((state: RootState) => state.cart);
 
-    const handleUpdateQuantity = (id: number, quantity: number) => {
+    const handleUpdateQuantity = (id: string, quantity: number) => {
         const product = products.find((product) => product.id === id);
 
         if (product != null && product.stock >= quantity && quantity > 0)

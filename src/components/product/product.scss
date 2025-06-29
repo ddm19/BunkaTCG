@@ -7,13 +7,18 @@
         background: var(--primary-color);
         padding: var(--spacing-2);
         border-radius: var(--border-radius-2);
-        ;
         text-align: center;
         box-shadow: 0 2px 5px var(--shadow-box-color-1);
         width: 100%;
         height: 100%;
         padding: var(--spacing-2);
         transition: 0.3s ease-in;
+        height: var(--max-product-card-size);
+
+        @media (max-width: 768px)
+        {
+            max-height: var(--max-product-card-size-mobile);
+        }
 
 
         &:hover
@@ -38,10 +43,15 @@
 
         &__image
         {
-            max-height: var(--max-product-card-size);
+            max-height: var(--max-image-card-size);
             border-radius: var(--border-radius-1);
             object-fit: contain;
             width: 100%;
+
+            @media (max-width: 768px)
+            {
+                max-height: var(--max-image-card-size-mobile);
+            }
 
 
             &--soldout
@@ -63,6 +73,34 @@
         {
             font-size: var(--font-size-2);
             color: var(--text-color);
+            overflow: auto;
+            width: 100%;
+            text-overflow: ellipsis;
+            margin: var(--spacing-1) 0;
+
+            @media (max-width: 768px)
+            {
+                font-size: var(--font-size-1);
+            }
+
+        }
+
+        // scrollbar styles
+        &__description::-webkit-scrollbar
+        {
+            width: var(--border-radius-1);
+            height: var(--border-radius-1);
+            border-radius: var(--border-radius-2);
+            background-color: var(--secondary-color);
+
+
+        }
+
+        &__description::-webkit-scrollbar-thumb
+        {
+            background-color: var(--accent-color);
+            border-radius: var(--border-radius-1);
+
         }
 
         &__price
@@ -137,4 +175,3 @@
             }
         }
     }
-

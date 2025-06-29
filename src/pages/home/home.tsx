@@ -8,7 +8,7 @@ import Loading from "components/loading/loading";
 
 export default function Home() {
     const [products, setProducts] = useState<ProductType[]>([]);
-    const [featuredProduct, setFeaturedProduct] = useState<ProductType | null>(null);
+    const [featuredProduct, setFeaturedProduct] = useState<ProductType | undefined>();
     const [visibleProducts, setVisibleProducts] = useState(4);
     const [isGoingUpVisible, setIsGoingUpVisible] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -16,8 +16,11 @@ export default function Home() {
 
     useEffect(() => {
         const fetchData = async () => {
-            getProducts().then((products) => setProducts(products));
-            getFeaturedProduct().then((product) => setFeaturedProduct(product));
+            setLoading(true);
+            getProducts().then((products) => setProducts(products))
+                .finally(() => setLoading(false));
+            getFeaturedProduct().then((product) => setFeaturedProduct(product))
+                .finally(() => setLoading(false));
         };
 
         fetchData();
@@ -58,10 +61,10 @@ export default function Home() {
 
     return (
         <div className="home">
-            <section className="home__hero">
+            <span className="home__hero">
                 <h1>Bienvenido a Bunka Dojo</h1>
                 <p>Compra los mejores productos con descuentos exclusivos.</p>
-            </section>
+            </span>
 
             <section className="home__featuredProduct">
                 {featuredProduct && (

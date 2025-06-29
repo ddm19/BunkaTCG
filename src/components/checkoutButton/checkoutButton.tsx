@@ -1,45 +1,49 @@
-import { useDispatch } from "react-redux";
+import { useStripe } from "@stripe/react-stripe-js";
+import { supabase } from "services/supabaseClient";
+
+import "./checkoutButton.scss";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { clearCart } from "redux/cartSlice";
+import Loading from "components/loading/loading";
+import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+interface CheckoutButtonProps {
+    items?: { price: string; quantity: number }[];
+    className?: string;
+}
 
-export default function CheckoutButton() {
-    const [errorMessage, setErrorMessage] = useState<string | null>(null);
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
+export default function CheckoutButton(props: CheckoutButtonProps) {
+    const { items, className } = props;
+    const stripe = useStripe();
+    const [isLoading, setIsLoading] = useState(false);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+    const checkout = async () => {
+        setIsLoading(true);
+        if (!stripe) {
+            throw new Error("Stripe not initialized");
+        }
+        supabase.functions.invoke("CreateStripeCheckoutSession", {
+            body: {
+                line_items: items || [],
+            }
+        }).then((response) => {
+            if (response.error) {
+                throw new Error(response.error.message)
+            }
+            const { sessionId } = response.data;
+            stripe.redirectToCheckout({ sessionId })
+        }).finally(() => {
+            setIsLoading(false);
+        });
 
-        // Simulate successful payment
-        alert("Pago realizado con éxito (modo prueba)");
-        dispatch(clearCart());
-        setErrorMessage(null);
-        navigate("/");
-    };
+
+    }
 
     return (
-        <form className="checkout__form" onSubmit={(e) => handleSubmit(e)}>
-            <div className="checkout__formGroup">
-                <label className="checkout__label">Número de Tarjeta</label>
-                <input className="checkout__input" style={{ color: "white" }} />
-            </div>
 
-            <div className="checkout__formGroup">
-                <label className="checkout__label">Fecha de Expiración</label>
-                <input className="checkout__input" style={{ color: "white" }} />
-            </div>
 
-            <div className="checkout__formGroup">
-                <label className="checkout__label">CVC</label>
-                <input className="checkout__input" style={{ color: "white" }} />
-            </div>
-            
-            {errorMessage && <p className="checkout__error"><span className="checkout__errorText">{errorMessage}</span></p>}
+        <div className={`cart__buttons ${className || ""}`}>
+            <button disabled={isLoading} className="cart__checkout" onClick={checkout} > {isLoading ? <Loading className="checkoutButton__loading" width="var(--load-spinner-size-1)" height="var(--load-spinner-size-1)" /> : <><FontAwesomeIcon icon={faCreditCard} /> Finalizar Compra</>}</button>
+        </div>
+    )
 
-            <button className="checkout__button" type="submit">
-                Pagar
-            </button>
-        </form>
-    );
-}
+} 
