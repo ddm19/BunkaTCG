@@ -1,6 +1,7 @@
 import { ProductType } from "types/product";
 import "./featuredProduct.scss";
 import { Link } from "react-router-dom";
+import { priceFormatter } from "components/product/product";
 
 interface FeaturedProductProps {
     product: ProductType;
@@ -17,7 +18,7 @@ const FeaturedProductComponent = (props: FeaturedProductProps) => {
                 <div className="featuredProduct__textContainer">
                     <h2 className="featuredProduct__title">{product.name}</h2>
                     <p className="featuredProduct__description">{product.description}</p>
-                    <p className="featuredProduct__price">{product.price}€</p>
+                    <p className="featuredProduct__price">{priceFormatter.format(product.price)}</p>
                     <button className="featuredProduct__button">Cómpralo ahora</button>
                 </div>
 

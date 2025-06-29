@@ -12,7 +12,7 @@ interface ProductProps {
     cartButton?: boolean;
 }
 
-const priceFormatter = new Intl.NumberFormat('es-ES', {
+export const priceFormatter = new Intl.NumberFormat('es-ES', {
     style: 'currency',
     currency: 'EUR',
 });
