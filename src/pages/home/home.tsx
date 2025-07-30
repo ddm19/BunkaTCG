@@ -63,7 +63,9 @@ export default function Home() {
         <div className="home">
             <span className="home__hero">
                 <h1>Bienvenido a Bunka Dojo</h1>
-                <p>Compra los mejores productos con descuentos exclusivos.</p>
+                <h1>Compra  de Cartas Pokémon, Magic y One Piece</h1>
+                <h2>Explora nuestra selección de cartas y productos Pokémon</h2>
+                <h2>Descubre novedades sobre Magic: The Gathering y Boosters de One Piece TCG</h2>
             </span>
 
             <section className="home__featuredProduct">
